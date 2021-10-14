@@ -1,4 +1,4 @@
-import { Button, Card, Input, Alert } from "antd";
+import { Button, Card, Input, Alert, message } from "antd";
 import styled from "styled-components";
 import { MailOutlined } from "@ant-design/icons";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,11 @@ const Login = () => {
     handleSubmit,
     formState: { errors }
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data.email);
+
+    message.success(`Email has been sent to ${data.email}`);
+  };
 
   return (
     <LoginBackground>
