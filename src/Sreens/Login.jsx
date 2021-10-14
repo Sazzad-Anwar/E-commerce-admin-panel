@@ -8,6 +8,8 @@ import {
 } from "@ant-design/icons";
 
 const Login = () => {
+  console.log("hello");
+
   return (
     <LoginBackground>
       <LoginCard>
@@ -29,8 +31,8 @@ const Login = () => {
         <CustomCheckBox>Remember Password</CustomCheckBox>
         <LoginButton type="primary">Log In</LoginButton>
 
-        <ForgetPassword className="flex justify-between align-middle">
-          <span>Forget Password ?</span>
+        <ForgetPassword>
+          <p>Forget Password ?</p>
           <Button type="link">Get reset link</Button>
         </ForgetPassword>
       </LoginCard>
@@ -92,7 +94,7 @@ const CustomInput = styled(Input)`
   &:hover,
   &:active,
   &:focus {
-    outline: 0px solid #352e3d !important;
+    outline: 1px solid #352e3d !important;
     border: 1px solid #352e3d !important;
     box-shadow: 0 0 0 0px rgba(24, 144, 255, 0.2);
   }
@@ -112,7 +114,7 @@ const CustomInputPassword = styled(Input.Password)`
   &:hover,
   &:active,
   &:focus {
-    outline: 0px solid #352e3d !important;
+    outline: 1px solid #352e3d !important;
     border: 1px solid #352e3d !important;
     box-shadow: 0 0 0 0px rgba(24, 144, 255, 0.2);
   }
@@ -137,10 +139,17 @@ const LoginButton = styled(Button)`
 `;
 
 const ForgetPassword = styled.div`
-  & span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & span,
+  & p {
     color: #d3cbdb;
     font-weight: 600;
     font-size: 15px;
+  }
+  & p {
+    padding-top: 10px;
   }
 `;
 
