@@ -15,6 +15,7 @@ import {
     sellingStatistics,
     orderStatistics,
     orderDetails,
+    profitStatistics,
 } from '../jsonData';
 const AdminPanelTemplate = lazy(() => import('../Components/AdminPanelTemplate'));
 const Chart = lazy(() => import('./../Components/Chart'));
@@ -146,7 +147,7 @@ const Dashboard = () => {
 
             {/* sales chart */}
             <Row gutter={20}>
-                <Col className="gutter-row mt-5" span={6} xs={24} sm={24} md={24} lg={12}>
+                <Col className="gutter-row mt-5" span={6} xs={24} sm={24} md={24} lg={12} xl={8}>
                     <Card
                         title={<Title level={3}>Sales Overview</Title>}
                         className="border-2 shadow-md"
@@ -161,21 +162,27 @@ const Dashboard = () => {
                         </Suspense>
                         <div className="flex flex-col justify-between lg:flex-row items-center mt-5 bg-gray-300">
                             <Card className="border-0 bg-transparent py-0 my-0">
-                                <p className="text-lg text-center lg:text-sm">Total Sales</p>
-                                <h1 className="xl:text-xl lg:text-sm">BDT 41032.00</h1>
+                                <p className="text-sm text-center lg:text-sm">Total Sales</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    BDT <b>41032.00</b>
+                                </h1>
                             </Card>
                             <Card className="border-0 bg-transparent py-0 my-0">
-                                <p className="text-lg text-center lg:text-sm">This Month</p>
-                                <h1 className="xl:text-xl lg:text-sm">BDT 41032.00</h1>
+                                <p className="text-sm text-center lg:text-sm">This Month</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    BDT <b>41032.00</b>
+                                </h1>
                             </Card>
                             <Card className="border-0 bg-transparent py-0 my-0">
-                                <p className="text-lg text-center lg:text-sm">This Week</p>
-                                <h1 className="xl:text-xl lg:text-sm">BDT 41032.00</h1>
+                                <p className="text-sm text-center lg:text-sm">This Week</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    BDT <b>41032.00</b>
+                                </h1>
                             </Card>
                         </div>
                     </Card>
                 </Col>
-                <Col className="gutter-row mt-5" span={6} xs={24} sm={24} md={24} lg={12}>
+                <Col className="gutter-row mt-5" span={6} xs={24} sm={24} md={24} lg={12} xl={8}>
                     <Card
                         title={<Title level={3}>Sales Overview</Title>}
                         className="border-2 shadow-md"
@@ -190,16 +197,57 @@ const Dashboard = () => {
                         </Suspense>
                         <div className="flex flex-col justify-between lg:flex-row items-center mt-5 bg-gray-300">
                             <Card className="border-0 bg-transparent py-0 my-0">
-                                <p className="text-lg text-center lg:text-sm">Total Orders</p>
-                                <h1 className="xl:text-xl lg:text-sm text-center">79</h1>
+                                <p className="text-sm text-center lg:text-sm">Total Orders</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    <b>10</b>
+                                </h1>
                             </Card>
                             <Card className="border-0 bg-transparent py-0 my-0">
-                                <p className="text-lg text-center lg:text-sm">This Month</p>
-                                <h1 className="xl:text-xl lg:text-sm text-center">7</h1>
+                                <p className="text-sm text-center lg:text-sm">This Month</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    <b>7</b>
+                                </h1>
                             </Card>
                             <Card className="border-0 bg-transparent py-0 my-0">
-                                <p className="text-lg text-center lg:text-sm">This Week</p>
-                                <h1 className="xl:text-xl lg:text-sm text-center">2</h1>
+                                <p className="text-sm text-center lg:text-sm">This Week</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    <b>2</b>
+                                </h1>
+                            </Card>
+                        </div>
+                    </Card>
+                </Col>
+                <Col className="gutter-row mt-5" span={6} xs={24} sm={24} md={24} lg={12} xl={8}>
+                    <Card
+                        title={<Title level={3}>Profit Overview</Title>}
+                        className="border-2 shadow-md"
+                    >
+                        <Suspense fallback={<Loader />}>
+                            <Chart
+                                data={profitStatistics}
+                                xField={'month'}
+                                yField={'value'}
+                                size={5}
+                            />
+                        </Suspense>
+                        <div className="flex flex-col justify-between lg:flex-row items-center mt-5 bg-gray-300">
+                            <Card className="border-0 bg-transparent py-0 my-0">
+                                <p className="text-sm text-center lg:text-sm">Total Sales</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    BDT <b>41032.00</b>
+                                </h1>
+                            </Card>
+                            <Card className="border-0 bg-transparent py-0 my-0">
+                                <p className="text-sm text-center lg:text-sm">This Month</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    BDT <b>41032.00</b>
+                                </h1>
+                            </Card>
+                            <Card className="border-0 bg-transparent py-0 my-0">
+                                <p className="text-sm text-center lg:text-sm">This Week</p>
+                                <h1 className="text-lg text-center lg:text-sm">
+                                    BDT <b>41032.00</b>
+                                </h1>
                             </Card>
                         </div>
                     </Card>

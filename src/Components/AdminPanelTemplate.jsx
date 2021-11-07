@@ -13,18 +13,17 @@ import {
     TeamOutlined,
 } from '@ant-design/icons';
 import InventoryIcon from '@mui/icons-material/Inventory';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../Redux/Actions/LoginAction';
-import { useEffect, useRef, useState, createElement } from 'react';
+import { useEffect, useState } from 'react';
 
 const { Sider, Content } = Layout;
 
 let { SubMenu } = Menu;
 
 const AdminPanelTemplate = ({ children }) => {
-    const history = useHistory();
+    const location = useLocation();
     const dispatch = useDispatch();
     const [collapsed, setCollapsed] = useState(false);
 
@@ -32,13 +31,7 @@ const AdminPanelTemplate = ({ children }) => {
 
     let userInfo = useSelector((state) => state.user);
 
-    const redirect = location.search ? location.search.split('=')[1] : '/dashboard';
-
     useEffect(() => {
-        if (userInfo && userInfo?.details?._id) {
-            history.push(redirect);
-        }
-
         if (window.innerWidth <= 991) {
             setCollapsed(true);
         }
@@ -57,6 +50,8 @@ const AdminPanelTemplate = ({ children }) => {
     const logoutHandler = () => {
         dispatch(logOut());
     };
+
+    console.log(location.pathname);
 
     const menu = (
         <Menu>
@@ -109,42 +104,61 @@ const AdminPanelTemplate = ({ children }) => {
                     {!collapsed ? <h3 className="text-xl text-white ml-3">E-commerce</h3> : null}
                 </div>
                 <Menu
-                    defaultSelectedKeys={['1']}
+                    defaultSelectedKeys={[
+                        location.pathname.includes('/products')
+                            ? '/products'
+                            : location.pathname.includes('/category')
+                            ? '/category'
+                            : location.pathname,
+                    ]}
                     mode="inline"
                     theme="dark"
                     className="shadow-lg"
+                    defaultOpenKeys={[
+                        location.pathname.includes('/products') ||
+                        location.pathname.includes('/products/') ||
+                        location.pathname.includes('/category')
+                            ? 'catalogue'
+                            : location.pathname.includes('/orders') ||
+                              location.pathname.includes('/service-orders')
+                            ? 'sales'
+                            : location.pathname.includes('/inventory-dashboard') ||
+                              location.pathname.includes('/inventory-details')
+                            ? 'store'
+                            : null,
+                    ]}
                     inlineCollapsed={collapsed}
                 >
-                    <Menu.Item key="1" icon={<DashboardOutlined />}>
+                    <Menu.Item key="/dashboard" icon={<DashboardOutlined />}>
                         <Link to="/dashboard">Dashboard</Link>
                     </Menu.Item>
-                    <SubMenu key="3" icon={<AuditOutlined />} title="Sales">
-                        <Menu.Item key="orders">
+                    <SubMenu key="sales" icon={<AuditOutlined />} title="Sales">
+                        <Menu.Item key="/orders">
                             <Link to="/orders">Orders</Link>
                         </Menu.Item>
-                        <Menu.Item key="service-orders">
+                        <Menu.Item key="/service-orders">
                             <Link to="/service-orders">Service Orders</Link>
                         </Menu.Item>
                     </SubMenu>
-                    <Menu.Item key="4" icon={<ShopOutlined />}>
+                    <Menu.Item key="/pos" icon={<ShopOutlined />}>
                         <Link to="/pos">POS</Link>
                     </Menu.Item>
-                    <SubMenu key="5" icon={<AppstoreAddOutlined />} title="Catalogue">
-                        <Menu.Item key="product">
-                            <Link to="/add-product">Product</Link>
+                    <SubMenu key="catalogue" icon={<AppstoreAddOutlined />} title="Catalogue">
+                        <Menu.Item key={'/products'}>
+                            <Link to="/products">Product</Link>
                         </Menu.Item>
-                        <Menu.Item key="category">
-                            <Link to="/add-category">Category</Link>
+                        <Menu.Item key="/category">
+                            <Link to="/category">Category</Link>
                         </Menu.Item>
                     </SubMenu>
-                    <Menu.Item key="6" icon={<TeamOutlined />}>
+                    <Menu.Item key="/customers" icon={<TeamOutlined />}>
                         <Link to="/customers">Customers</Link>
                     </Menu.Item>
-                    <SubMenu key="7" icon={<InventoryIcon />} title="Store & Inventory">
-                        <Menu.Item key="product">
+                    <SubMenu key="store" icon={<InventoryIcon />} title="Store & Inventory">
+                        <Menu.Item key="/inventory-dashboard">
                             <Link to="/inventory-dashboard">Dashboard</Link>
                         </Menu.Item>
-                        <Menu.Item key="category">
+                        <Menu.Item key="/inventory-details">
                             <Link to="/inventory-details">Inventory Details</Link>
                         </Menu.Item>
                     </SubMenu>
@@ -193,9 +207,9 @@ const AdminPanelTemplate = ({ children }) => {
                     ]}
                 />
                 <Content
-                    className="site-layout-background"
+                    className="site-layout-background overflow-auto"
                     style={{
-                        margin: '24px 16px',
+                        margin: '0px 0px 0px 0px',
                         padding: 24,
                         minHeight: 280,
                     }}

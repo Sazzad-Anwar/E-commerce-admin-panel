@@ -4,6 +4,7 @@ import { Column } from '@ant-design/charts';
 const BarChart = ({ xField, yField, fillColor, data }) => {
     const config = {
         data,
+        height: 200,
         xField: xField,
         yField: yField,
         label: {

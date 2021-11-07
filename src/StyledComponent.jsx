@@ -12,7 +12,7 @@ export const LoginBackground = Styled.div`
 `;
 
 export const LoginCard = Styled(Card)`
-    background: #001529;
+    background: transparent;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.56) !important;
     position: absolute;
     padding: 31px 31px;
@@ -41,41 +41,41 @@ export const LoginCard = Styled(Card)`
 `;
 
 export const CustomInput = Styled(Input)`
-    background: #352e3d !important;
+    background: #001529 !important;
     color: #d3cbdb !important;
     padding: 10px 15px;
     border: 1px solid transparent !important;
     box-shadow: 0 0 0 0px rgba(24, 144, 255, 0.2);
     margin: 10px 0;
     & input {
-        background: #352e3d !important;
+        background: #001529 !important;
         color: #d3cbdb !important;
     }
     &:hover,
     &:active,
     &:focus {
-        outline: 1px solid #352e3d !important;
-        border: 1px solid #352e3d !important;
+        outline: 1px solid #001529 !important;
+        border: 1px solid #001529 !important;
         box-shadow: 0 0 0 0px rgba(24, 144, 255, 0.2);
     }
 `;
 
 export const CustomInputPassword = Styled(Input.Password)`
-    background: #352e3d !important;
+    background: #001529 !important;
     color: #d3cbdb !important;
     padding: 10px 15px;
     border: 1px solid transparent !important;
     box-shadow: 0 0 0 0px rgba(24, 144, 255, 0.2);
     margin: 20px 0;
     & input {
-        background: #352e3d !important;
+        background: #001529 !important;
         color: #d3cbdb !important;
     }
     &:hover,
     &:active,
     &:focus {
-        outline: 1px solid #352e3d !important;
-        border: 1px solid #352e3d !important;
+        outline: 1px solid #001529 !important;
+        border: 1px solid #001529 !important;
         box-shadow: 0 0 0 0px rgba(24, 144, 255, 0.2);
     }
 `;
@@ -86,7 +86,7 @@ export const CustomCheckBox = Styled(Checkbox)`
 `;
 
 export const LoginButton = Styled(Button)`
-    background: #352e3d;
+    background: #001529;
     display: block;
     margin: 10px 0;
     width: 100%;
@@ -94,7 +94,7 @@ export const LoginButton = Styled(Button)`
     border: 0px;
     font-weight: 600px;
     &:hover {
-        background: #534b8f;
+        background: #003668c5;
     }
 `;
 

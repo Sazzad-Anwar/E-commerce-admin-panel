@@ -19,6 +19,17 @@ svg {
     vertical-align: initial;
 }
 
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: initial;
+}
+
 .page-header-bg {
     background-color: #302938;
 }

@@ -3,9 +3,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { loginReducer } from './Reducers/LoginReducer';
 import jwt_decode from 'jwt-decode';
+import { getProductReducer, deleteProductReducer } from './Reducers/ProductReducer';
 
 const reducer = combineReducers({
-    user: loginReducer
+    user: loginReducer,
+    getProducts: getProductReducer,
+    deleteProduct: deleteProductReducer
 });
 
 const initialState = {

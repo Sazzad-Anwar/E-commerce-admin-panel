@@ -4,7 +4,7 @@ import { Line } from '@ant-design/charts';
 const Chart = ({ data, xField, yField, size }) => {
     const config = {
         data,
-        height: 400,
+        height: 200,
         xField,
         yField,
         point: {

@@ -8,11 +8,11 @@ import {
 export const loginReducer = (state = {}, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
-            return { loading: true };
+            return { isLoading: true };
         case LOGIN_REQUEST_SUCCESS:
-            return { loading: false, details: action.payload };
+            return { isLoading: false, details: action.payload };
         case LOGIN_REQUEST_FAILED:
-            return { loading: false, error: action.payload };
+            return { isLoading: false, error: action.payload };
         case LOGOUT:
             return {};
         default:
